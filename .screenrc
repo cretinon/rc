@@ -1,0 +1,11 @@
+startup_message off
+
+hardstatus alwayslastline
+hardstatus string "%-w%{= BW}%50>%n %t%{-}%+w%< %87=%d.%m.%Y %0c"
+
+deflogin off
+silencewait 15
+autodetach on
+escape ^Ww
+
+bindkey ² prev   
