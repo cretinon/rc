@@ -60,9 +60,9 @@
   (neo-autorefresh t)
   (neo-window-width 35)
   (neo-toggle-window-keep-p t)
+  (neo-show-hidden-files t)
   ;; takes too long to update on first try
   ;; (neo-vc-integration '(face char))
-  (neo-show-hidden-files nil)
   (neo-display-action '(gopar/neo-display-fn))
   :init
   (defun gopar/neo-display-fn (buffer _alist)
@@ -234,29 +234,45 @@
       kept-new-versions 5    ; keep some new versions
       kept-old-versions 2)   ; and some old ones, too
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; keybind
 (defun reload-init-file ()
   (interactive)
   (load-file user-init-file))
 
-(global-set-key (kbd "C-c C-l") 'reload-init-file)    ; Reload .emacs file
+(global-set-key (kbd "C-c C-l") 'reload-init-file)
 
+;; useful emacs keybinding below
+;; "C-h b" describes bindings
+;; "C-x C-s" save buffer
+;; "C-x 1" show only this buffer
+;; "C-x 2" split horizontally
+;; "C-x 3" split vertically
+;; "C-x 0" kill buffer and close it
+;; "C-x o" switch buffer
+;; "C-_" undo
+;; "C-s" search
+;; "Esc-%" Query replace
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; mode <-> file extension
 (use-package json-mode
   :ensure
   :init)
 
 (add-to-list 'auto-mode-alist '("\\.json\\'" . json-mode))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Theme
 (use-package cyberpunk-theme
   :ensure
   :init)
 
 (load-theme 'cyberpunk t)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; EO Emacs config
 (provide '.emacs)
 ;;; .emacs ends here
-
-
-
-
-
-
