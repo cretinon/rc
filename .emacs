@@ -160,7 +160,7 @@
 ;; git rm :
 ;; git commit :
 ;; * move line selector on modified file(s) in "Unstaged changes"
-;; * type 's' (in order to set to "staged changes"
+;; * type 's' (in order to set to "staged changes")
 ;; * type 'c' 'c' (in order to commit)
 ;; * edit changelog message
 ;; * type "C-c c"
