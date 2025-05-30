@@ -153,6 +153,16 @@
   ;; enabled right away. Note that this forces loading the package.
   (marginalia-mode))
 
+;; how-to use magit :
+;;
+;; open : "C-x g"
+;; git add :
+;; git rm :
+;; git commit :
+;; * select modified file in "Unstaged changes"
+;; * 
+;; git push :
+
 (use-package magit
   :ensure t
   :commands magit-get-current-branch
