@@ -12,3 +12,5 @@ escape ^Ww
 
 bindkey -t "^[[D" prev
 bindkey -t "^[[C" next # ctrl+arrow
+
+# C-a A : rename tab

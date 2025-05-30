@@ -256,6 +256,9 @@
 ;; "C-s" search
 ;; "Esc-%" Query replace
 ;; "C-space" Start selection
+;; "C-x r m" set bookmark
+;; "C-x r l" list bookmarks
+;; "M-x bookmark-save" save bookmarks
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; redifine key using emacs in putty. See doc here : https://www.emacswiki.org/emacs/PuTTY#toc8
