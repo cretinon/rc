@@ -157,7 +157,7 @@
 ;; pre requisite : set username for repo : git config user.name "jacques@cretinon.fr"
 ;;
 ;; open : "C-x g"
-;; git add :
+;; git add : Once file is saved, in buffer type "M-x magit-stage-file"
 ;; git rm :
 ;; git commit :
 ;; * move line selector on modified file(s) in "Unstaged changes"
@@ -239,6 +239,12 @@
   (load-file user-init-file))
 
 (global-set-key (kbd "C-c C-l") 'reload-init-file)    ; Reload .emacs file
+
+(use-package json-mode
+  :ensure
+  :init)
+
+(add-to-list 'auto-mode-alist '("\\.json\\'" . json-mode))
 
 (use-package cyberpunk-theme
   :ensure
