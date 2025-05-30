@@ -163,7 +163,7 @@
 ;; * type 's' (in order to set to "staged changes")
 ;; * type 'c' 'c' (in order to commit)
 ;; * edit changelog message
-;; * type "C-c c"
+;; * type "C-c C-c"
 ;; git push :
 ;; * move line selector on Unmerged into branched
 ;; * type 'P' (in order to push) and 'p' again
