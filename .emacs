@@ -154,7 +154,7 @@
   (marginalia-mode))
 
 ;; how-to use magit :
-;; pre requisite : set username for repo : git remote set-url origin git@github.com:jacques@cretinon.fr/rc.git
+;; pre requisite : set username for repo : git config user.name "jacques@cretinon.fr"
 ;;
 ;; open : "C-x g"
 ;; git add :
