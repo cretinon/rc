@@ -159,9 +159,14 @@
 ;; git add :
 ;; git rm :
 ;; git commit :
-;; * select modified file in "Unstaged changes"
-;; * 
+;; * move line selector on modified file(s) in "Unstaged changes"
+;; * type 's' (in order to set to "staged changes"
+;; * type 'c' 'c' (in order to commit)
+;; * edit changelog message
+;; * type "C-c c"
 ;; git push :
+;; * move line selector on Unmerged into branched
+;; * type 'P' (in order to push) and 'p' again
 
 (use-package magit
   :ensure t
