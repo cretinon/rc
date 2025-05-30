@@ -1,5 +1,7 @@
 startup_message off
 
+term screen-256color
+
 hardstatus alwayslastline
 hardstatus string "%-w%{= BW}%50>%n %t%{-}%+w%< %87=%d.%m.%Y %0c"
 
@@ -8,4 +10,5 @@ silencewait 15
 autodetach on
 escape ^Ww
 
-bindkey ² prev   
+bindkey -t "^[[D" prev
+bindkey -t "^[[C" next # ctrl+arrow
