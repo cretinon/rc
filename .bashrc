@@ -5,27 +5,27 @@
 # PS1='${debian_chroot:+($debian_chroot)}\h:\w\$ '
 # umask 022
 
-# You may uncomment the following lines if you want `ls' to be colorized:
+
 export LS_OPTIONS='--color=auto'
 eval "$(dircolors)"
 alias ls='ls $LS_OPTIONS'
 alias ll='ls $LS_OPTIONS -l'
 alias l='ls $LS_OPTIONS -lAi'
-#
-# Some more alias to avoid making mistakes:
-# alias rm='rm -i'
-# alias cp='cp -i'
-# alias mv='mv -i'
+
 alias df='df -h'
 
-alias gitd='git diff'
-alias gitc='git commit'
-alias gitp='git push'
+alias grep='grep --color $@ 2>/dev/null'
+
+#alias gitd='git diff'
+#alias gitc='git commit'
+#alias gitp='git push'
 
 alias rc='source ~/.bashrc'
 alias ra='source ~/.aliases'
-alias main='/root/git/shell/main.sh'
-alias screen='TERM=xterm screen'
+
+#alias main='/root/git/shell/main.sh'
+#alias screen='TERM=xterm screen'
+
 alias my_ip='curl ipinfo.io/ip && echo ""'
 alias drop_cache='sync; echo 3 > /proc/sys/vm/drop_caches'
 
@@ -42,7 +42,7 @@ count_untracked() {
     _modified__=$(git status --porcelain 2> /dev/null | grep "^ M" | wc -l)
     _added__=$(git status --porcelain 2> /dev/null | grep "^ A" | wc -l)
     _deleted__=$(git status --porcelain 2> /dev/null | grep "^ D" | wc -l)
-    _untrack__=$(git status --porcelain 2> /dev/null | grep "^ \?\?" | wc -l)
+    _untrack__=$(git status --porcelain 2> /dev/null | grep "^??" | wc -l)
 
     _result__=""
     
