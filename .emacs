@@ -25,6 +25,12 @@
   (package-install 'use-package))
 (require 'use-package)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; custom file
+(setq custom-file "~/.emacs.custom")
+(load custom-file)
+
+
 ;; see https://github.com/gopar/.emacs.d/blob/main/README.org
 
 (use-package flycheck
@@ -103,7 +109,7 @@
     (unless (or (bound-and-true-p mct--active)
                 (bound-and-true-p vertico--input)
                 (eq (current-local-map) read-passwd-map))
-      ;; (setq-local corfu-auto nil) ;; Enable/disable auto completion
+      (setq-local corfu-auto 1) ;; Enable/disable auto completion
       (setq-local corfu-echo-delay nil ;; Disable automatic echo and popup
                   corfu-popupinfo-delay nil)
       (corfu-mode 1)))
@@ -201,24 +207,6 @@
   :ensure t
   :hook (after-init . global-git-gutter-mode))
 
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-enabled-themes '(manoj-dark))
- '(custom-safe-themes
-   '("e9d47d6d41e42a8313c81995a60b2af6588e9f01a1cf19ca42669a7ffd5c2fde" "5a0ddbd75929d24f5ef34944d78789c6c3421aa943c15218bac791c199fc897d" "18a1d83b4e16993189749494d75e6adb0e15452c80c431aca4a867bcc8890ca9" "51fa6edfd6c8a4defc2681e4c438caf24908854c12ea12a1fbfd4d055a9647a3" "385d1f714f1a34b51d81aea912b843056d1fa8694df690b0a25bdfda1dbe0ccf" default))
- '(magit-process-apply-ansi-colors t nil nil "Customized with use-package magit")
- '(package-selected-packages '(git-gutter vertico golden-ratio)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
 ;; Put backup files neatly away --
 (let ((backup-dir "~/tmp/emacs/backups")
       (auto-saves-dir "~/tmp/emacs/auto-saves/"))
@@ -262,6 +250,7 @@
 ;; "C-x r m" set bookmark
 ;; "C-x r l" list bookmarks
 ;; "M-x bookmark-save" save bookmarks
+;; "F10" open menu bar
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; redifine key using emacs in putty. See doc here : https://www.emacswiki.org/emacs/PuTTY#toc8
@@ -341,6 +330,17 @@
   :init)
 
 (load-theme 'cyberpunk t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Menu & scrollbar
+(tool-bar-mode 0)
+(menu-bar-mode 1)
+(scroll-bar-mode 0)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Display line numbers
+(global-display-line-numbers-mode 1)
+(setq-default inhibit-splash-screen t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; EO Emacs config
