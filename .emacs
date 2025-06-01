@@ -339,7 +339,6 @@
       kept-new-versions 5    ; keep some new versions
       kept-old-versions 2)   ; and some old ones, too
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; keybind
 (defun reload-init-file ()
@@ -356,7 +355,6 @@
 ;;   "C-x 3" split vertically
 ;;   "C-x 0" kill buffer and close it
 ;;   "C-x o" switch buffer
-;;   "C-_" undo
 ;;   "C-/" undo
 ;;   "C-s" search
 ;;   "Esc-%" Query replace
