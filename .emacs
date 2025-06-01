@@ -474,6 +474,10 @@
 (xterm-mouse-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; highlight current line
+(global-hl-line-mode t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; EO Emacs config
 (provide '.emacs)
 ;;; .emacs ends here
