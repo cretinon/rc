@@ -451,6 +451,15 @@
   :init)
 (add-to-list 'auto-mode-alist '("\\.json\\'" . json-mode))
 
+(use-package csv-mode
+  :ensure t
+  :config
+  :hook (
+	 (csv-mode . csv-guess-set-separator)
+         (csv-mode . csv-align-mode)
+  )
+)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Theme
 (use-package cyberpunk-theme
@@ -468,6 +477,10 @@
 ;; Display line numbers
 (global-display-line-numbers-mode 1)
 (setq-default inhibit-splash-screen t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; insert matching delimiters
+(electric-pair-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ILU mouse
