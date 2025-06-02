@@ -1,34 +1,26 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
-# Note: PS1 and umask are already set in /etc/profile. You should not
-# need this unless you want different defaults for root.
-# PS1='${debian_chroot:+($debian_chroot)}\h:\w\$ '
-# umask 022
+# This is JCRE' .bashrc
+# * to get all rc files : "get_last_rc" or "wget -q https://github.com/cretinon/rc/archive/refs/heads/main.tar.gz -O - | tar -zxvf - -C /tmp/"
+# * to clone rc repo : "clone_rc" or "git clone https://github.com/cretinon/rc.git"
 
-# You may uncomment the following lines if you want `ls' to be colorized:
 export LS_OPTIONS='--color=auto'
 eval "$(dircolors)"
 alias ls='ls $LS_OPTIONS'
 alias ll='ls $LS_OPTIONS -l'
 alias l='ls $LS_OPTIONS -lAi'
-#
-# Some more alias to avoid making mistakes:
-# alias rm='rm -i'
-# alias cp='cp -i'
-# alias mv='mv -i'
+
 alias df='df -h'
 
-alias gitd='git diff'
-alias gitc='git commit'
-alias gitp='git push'
+alias grep='grep --color $@ 2>/dev/null'
 
 alias rc='source ~/.bashrc'
 alias ra='source ~/.aliases'
-alias main='/root/git/shell/main.sh'
-alias screen='TERM=xterm screen'
+
 alias my_ip='curl ipinfo.io/ip && echo ""'
 alias drop_cache='sync; echo 3 > /proc/sys/vm/drop_caches'
-
+alias get_last_rc='wget -q https://github.com/cretinon/rc/archive/refs/heads/main.tar.gz -O - | tar -zxvf - -C /tmp/'
+alias clone_rc='git clone https://github.com/cretinon/rc.git'
 
 function ssh-screen() {
     screen -t $1 ssh $@
@@ -42,7 +34,7 @@ count_untracked() {
     _modified__=$(git status --porcelain 2> /dev/null | grep "^ M" | wc -l)
     _added__=$(git status --porcelain 2> /dev/null | grep "^ A" | wc -l)
     _deleted__=$(git status --porcelain 2> /dev/null | grep "^ D" | wc -l)
-    _untrack__=$(git status --porcelain 2> /dev/null | grep "^ \?\?" | wc -l)
+    _untrack__=$(git status --porcelain 2> /dev/null | grep "^??" | wc -l)
 
     _result__=""
     
@@ -72,6 +64,32 @@ count_untracked() {
     fi
 															       
     echo $_result__
+}
+
+_my_wrap() {
+    # global var for debugging purpose
+    VERBOSE=false
+    DEBUG=false
+    FUNC_LIST=()
+
+    CUR_DIR="/root/git/shell"
+    CUR_NAME="main"
+
+    unalias grep
+
+    # load conf files and libs
+    source $CUR_DIR/lib/lib_dev.sh
+
+    _load_conf "$CUR_DIR/conf/$CUR_NAME.conf"
+
+    # process options
+    if _process_opts "$@" ; then
+	_load_libs 
+	# process previous options in LIB user choose
+	if _exist $LIB; then _process_lib_$LIB "$OPTS"; fi
+    fi
+
+    alias grep='grep --color $@ 2>/dev/null'
 }
 
 PS1="\[\033[33m\]\u\[\033[00m\]@\[\033[35m\]\h\[\033[00m\] \w\[\033[32m\]\$(parse_git_branch)\[\033[00m\]\$(count_untracked) $ "
