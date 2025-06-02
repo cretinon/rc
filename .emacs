@@ -492,6 +492,21 @@
 (global-hl-line-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; tramp
+;; working with /plink:user@host/
+;;(setq tramp-verbose 6)
+(when (eq system-type 'w32)
+  (setq tramp-default-method "plink")
+  (setq tramp-auto-save-directory "c:\\temp")
+  (when (and (not (string-match putty-directory (getenv "PATH")))
+	     (file-directory-p putty-directory))
+    (setenv "PATH" (concat putty-directory ";" (getenv "PATH")))
+    (add-to-list 'exec-path putty-directory)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; w32 specific
+;; all-the-icons-install-fonts then go to font path and instal fonts
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; EO Emacs config
 (provide '.emacs)
-;;; .emacs ends here
