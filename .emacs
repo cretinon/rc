@@ -385,7 +385,7 @@
 ;; redifine key in order to use emacs in putty. See doc here : https://www.emacswiki.org/emacs/PuTTY#toc8
 ;; PuTTY hack - terminal needs to be in SCO mode and connection>data>terminal>xterm-256color
 (if (eq system-uses-terminfo t)
-    (progn                              
+    (progn
       (define-key key-translation-map [\e] [\M])
       (define-key input-decode-map "\e[H" [home])
       (define-key input-decode-map "\e[F" [end])
@@ -490,6 +490,22 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; highlight current line
 (global-hl-line-mode t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; highlight block code
+(use-package indent-guide
+  :ensure t
+  :init)
+(indent-guide-global-mode t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; complete code
+(use-package yasnippet
+  :ensure t
+  :init
+  (yas-global-mode 1)
+
+  (setq yas-snippet-dir "~/.emacs.d/snippets"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; tramp
