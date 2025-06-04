@@ -489,8 +489,12 @@
 (xterm-mouse-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; highlight current line
-(global-hl-line-mode t)
+;; highlight current line - tried a lot of conf, seems i dont like it
+;;(global-hl-line-mode t)
+;;(set-face-background hl-line-face "color-69") works, need to find good color
+;;(set-face-background hl-line-face "red")
+;;(set-face-foreground hl-line-face "red")
+;;(set-face-underline hl-line-face t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; highlight block code
@@ -507,6 +511,14 @@
   (yas-global-mode 1)
 
   (setq yas-snippet-dir "~/.emacs.d/snippets"))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; remember where cursor was when closing the file
+(save-place-mode 1)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; refresh file if modified on disk
+(global-auto-revert-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; tramp
