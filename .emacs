@@ -521,6 +521,10 @@
 (global-auto-revert-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; dont have to type yes and no anymore, just y or n
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; tramp
 ;; working with /plink:user@host/
 ;;(setq tramp-verbose 6)
