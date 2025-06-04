@@ -379,6 +379,7 @@
 ;;   * type 'P' (in order to push) and 'p' again
 ;; specific to consult :
 ;;   "M-s g" grep in code
+;;   "M-s l" search
 ;;   "M-g i" function ref
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
