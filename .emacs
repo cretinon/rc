@@ -362,6 +362,7 @@
 ;;   "C-x r m" set bookmark
 ;;   "C-x r l" list bookmarks
 ;;   "M-x bookmark-save" save bookmarks
+;;   "M-g M-g" goto line
 ;;   "F10" open menu bar
 ;; specific to magit :
 ;;   pre requisite : set username for repo : git config user.name "jacques@cretinon.fr"
@@ -383,7 +384,7 @@
 ;;   "M-g i" function ref
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; redifine key in order to use emacs in putty. See doc here : https://www.emacswiki.org/emacs/PuTTY#toc8
+;; redefine key in order to use emacs in putty. See doc here : https://www.emacswiki.org/emacs/PuTTY#toc8
 ;; PuTTY hack - terminal needs to be in SCO mode and connection>data>terminal>xterm-256color
 (if (eq system-uses-terminfo t)
     (progn
@@ -523,6 +524,23 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; dont have to type yes and no anymore, just y or n
 (fset 'yes-or-no-p 'y-or-n-p)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; UTF-8 all the things!
+(define-coding-system-alias 'UTF-8 'utf-8)
+(set-charset-priority 'unicode)
+(setq locale-coding-system   'utf-8)
+(set-terminal-coding-system  'utf-8)
+(set-keyboard-coding-system  'utf-8)
+(set-selection-coding-system 'utf-8)
+(prefer-coding-system        'utf-8)
+(setq default-process-coding-system '(utf-8-unix . utf-8-unix))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; xterm
+(use-package xterm-color
+  :ensure t)
+(setq compilation-environment '("TERM=xterm-256color"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; tramp
