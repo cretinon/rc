@@ -578,6 +578,7 @@
 ;; w32 specific
 ;; all-the-icons-install-fonts then go to font path and instal fonts
 ;; idkhow, git is working with magit on w32 :)
+;; got it with magit-pull from l64
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; org-mode and reveal
