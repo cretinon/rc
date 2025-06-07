@@ -566,7 +566,7 @@
 ;; tramp
 ;; working with /plink:user@host/
 ;;(setq tramp-verbose 6)
-(when (eq system-type 'w32)
+(when (eq system-type 'windows-nt)
   (setq tramp-default-method "plink")
   (setq tramp-auto-save-directory "c:\\temp"))
 ;;  (when (and (not (string-match putty-directory (getenv "PATH")))
@@ -579,9 +579,12 @@
 ;; all-the-icons-install-fonts then go to font path and instal fonts
 ;; idkhow, git is working with magit on w32 :)
 ;; got it with magit-pull from l64
-;; C:\Users\USERNAME\AppData\Roaming>mklink /h .emacs ..\..\git\rc\.emacs
-(when (eq system-type 'w32)
-  (setq default-directory "C:\Users\creti\git"))
+;; C:\Users\USERNAME\AppData\Roaming>mklink /h. emacs ..\..\git\rc\.emacs
+;; settings to set working dir is nit working, so made a link to runemacs.exe and set working dir in it
+;;(when (eq system-type 'windows-nt)
+;;(setq default-directory "C:\Users\creti\git")
+;;(cd "C:\Users\creti\git")
+;;)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; org-mode and reveal
