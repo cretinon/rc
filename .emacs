@@ -352,6 +352,8 @@
   (interactive)
   (load-file user-init-file))
 (global-set-key (kbd "C-c C-l") 'reload-init-file)
+(global-set-key (kbd "C-c ;") 'comment-region)
+(global-set-key (kbd "C-c .") 'uncomment-region)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; useful emacs keybinding below :
@@ -565,6 +567,10 @@
 ;;    (add-to-list 'exec-path putty-directory)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; copy/paste with C-c C-v ; C-k C-y always working
+(cua-mode t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; w32 specific
 ;; all-the-icons-install-fonts then go to font path and instal fonts
 
@@ -573,6 +579,7 @@
 ;; pre requisite : cd ~/git ; git clone --recursive https://gitlab.com/oer/emacs-reveal.git
 ;; conf works but i dont really like revveal
 ;; removed all elpa and restart !
+;; maybe have a look to https://systemcrafters.net/emacs-tips/presentations-with-org-present/
 ;;
 ;;(use-package bibtex
 ;;  :ensure t)
