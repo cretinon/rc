@@ -329,10 +329,11 @@
   :hook (after-init . global-git-gutter-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; manage backup files
-(let ((backup-dir "~/tmp/emacs/backups")
-      (auto-saves-dir "~/tmp/emacs/auto-saves/"))
-  (dolist (dir (list backup-dir auto-saves-dir))
+;; manage emacs directories
+(let ((backup-dir "~/.emacs.d/backups")
+      (auto-saves-dir "~/.emacs.d/auto-saves/")
+      (temporary-file-directory "~/.emacs.d/tmp/"))
+  (dolist (dir (list backup-dir auto-saves-dir temporary-file-directory))
     (when (not (file-directory-p dir))
       (make-directory dir t)))
   (setq backup-directory-alist `(("." . ,backup-dir))
@@ -354,6 +355,13 @@
 (global-set-key (kbd "C-c C-l") 'reload-init-file)
 (global-set-key (kbd "C-c ;") 'comment-region)
 (global-set-key (kbd "C-c .") 'uncomment-region)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; copy/paste with C-c C-v ; C-k C-y always working
+;;do NOT use (cua-mode t), it will break C-z
+(global-set-key (kbd "C-c SPC") 'copy-region-as-kill)
+(global-set-key (kbd "C-v") 'yank)
+(global-set-key (kbd "C-x SPC") 'kill-region)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; useful emacs keybinding below :
@@ -565,10 +573,6 @@
 ;;	     (file-directory-p putty-directory))
 ;;    (setenv "PATH" (concat putty-directory ";" (getenv "PATH")))
 ;;    (add-to-list 'exec-path putty-directory)))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; copy/paste with C-c C-v ; C-k C-y always working
-(cua-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; w32 specific
