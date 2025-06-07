@@ -579,6 +579,9 @@
 ;; all-the-icons-install-fonts then go to font path and instal fonts
 ;; idkhow, git is working with magit on w32 :)
 ;; got it with magit-pull from l64
+;; C:\Users\USERNAME\AppData\Roaming>mklink /h .emacs ..\..\git\rc\.emacs
+(when (eq system-type 'w32)
+  (setq default-directory "C:\Users\creti\git"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; org-mode and reveal
