@@ -27,6 +27,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; if we need to call debbuger on specific call
 ;;(debug-on-entry 'package-initialize)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; if we need to refresh melpa pkg list
+;; package-refresh-contents
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; custom file
@@ -386,6 +389,9 @@
 ;;   "M-s g" grep in code
 ;;   "M-s l" search
 ;;   "M-g i" function ref
+;; specific to org-reveal
+;;   "C-c C-e w w"
+;;   "C-c C-e w b"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; redefine key in order to use emacs in putty. See doc here : https://www.emacswiki.org/emacs/PuTTY#toc8
@@ -565,44 +571,47 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; org-mode and reveal
 ;; pre requisite : cd ~/git ; git clone --recursive https://gitlab.com/oer/emacs-reveal.git
-(use-package bibtex
-  :ensure t)
-(use-package bibtex-completion
-  :ensure t)
-(use-package helm-bibtex
-  :ensure t)
-(setq bibtex-completion-bibliography '("~/bibtext/test.bib")
-	bibtex-completion-library-path '("~/bibtext/")
-	bibtex-completion-notes-path "~/bibtext/"
-	bibtex-completion-notes-template-multiple-files "* ${author-or-editor}, ${title}, ${journal}, (${year}) :${=type=}: \n\nSee [[cite:&${=key=}]]\n"
-	bibtex-completion-additional-search-fields '(keywords)
-	bibtex-completion-display-formats
-	'((article       . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${journal:40}")
-	  (inbook        . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} Chapter ${chapter:32}")
-	  (incollection  . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
-	  (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
-	  (t             . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*}"))
-	bibtex-completion-pdf-open-function
-	(lambda (fpath)
-	  (call-process "open" nil 0 nil fpath)))
-(setq bibtex-autokey-year-length 4
-      bibtex-autokey-name-year-separator "-"
-      bibtex-autokey-year-title-separator "-"
-      bibtex-autokey-titleword-separator "-"
-      bibtex-autokey-titlewords 2
-      bibtex-autokey-titlewords-stretch 1
-      bibtex-autokey-titleword-length 5)
-(define-key bibtex-mode-map (kbd "H-b") 'org-ref-bibtex-hydra/body)
-(use-package org-ref
-  :ensure t)
-(require 'org-ref-helm)
-
+;; conf works but i dont really like revveal
+;; removed all elpa and restart !
+;;
+;;(use-package bibtex
+;;  :ensure t)
+;;(use-package bibtex-completion
+;;  :ensure t)
+;;(use-package helm-bibtex
+;;  :ensure t)
+;;(setq bibtex-completion-bibliography '("~/bibtext/test.bib")
+;;	bibtex-completion-library-path '("~/bibtext/")
+;;	bibtex-completion-notes-path "~/bibtext/"
+;;	bibtex-completion-notes-template-multiple-files "* ${author-or-editor}, ${title}, ${journal}, (${year}) :${=type=}: \n\nSee [[cite:&${=key=}]]\n"
+;;	bibtex-completion-additional-search-fields '(keywords)
+;;	bibtex-completion-display-formats
+;;	'((article       . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${journal:40}")
+;;	  (inbook        . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} Chapter ${chapter:32}")
+;;	  (incollection  . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+;;	  (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+;;	  (t             . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*}"))
+;;	bibtex-completion-pdf-open-function
+;;	(lambda (fpath)
+;;	  (call-process "open" nil 0 nil fpath)))
+;;(setq bibtex-autokey-year-length 4
+;;      bibtex-autokey-name-year-separator "-"
+;;      bibtex-autokey-year-title-separator "-"
+;;      bibtex-autokey-titleword-separator "-"
+;;      bibtex-autokey-titlewords 2
+;;      bibtex-autokey-titlewords-stretch 1
+;;      bibtex-autokey-titleword-length 5)
+;;(define-key bibtex-mode-map (kbd "H-b") 'org-ref-bibtex-hydra/body)
+;;(use-package org-ref
+;;  :ensure t)
+;;(require 'org-ref-helm)
+;;
 ;; WARNING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-;; first, need to comment next 2 lines
+;; on fresh install, need to comment next 2 lines
 ;; then edit ~/.emacs.d/elpa/org-ref-2.0.0/org-ref-helm-bibtex.el and comment (require 'helm-config)
 ;; then uncomment and restart emacs
-(add-to-list 'load-path "~/git/emacs-reveal")
-(require 'emacs-reveal)
+;;(add-to-list 'load-path "~/git/emacs-reveal")
+;;(require 'emacs-reveal)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
