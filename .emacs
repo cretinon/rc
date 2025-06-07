@@ -584,6 +584,7 @@
 ;;(when (eq system-type 'windows-nt)
 ;;(setq default-directory "C:\Users\creti\git")
 ;;(cd "C:\Users\creti\git")
+;; more to know, we need https://gnuwin32.sourceforge.net/packages/diffutils.htm in chocolatey bin to run magit on w32
 ;;)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
