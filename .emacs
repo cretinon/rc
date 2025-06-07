@@ -481,7 +481,10 @@
 	 (csv-mode . csv-guess-set-separator)
          (csv-mode . csv-align-mode)
   )
-)
+  )
+
+(use-package pdf-tools
+  :ensure t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Theme
@@ -633,7 +636,21 @@
 ;;(add-to-list 'load-path "~/git/emacs-reveal")
 ;;(require 'emacs-reveal)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; support for pdf in emacs
+;; have to M-x pdt-tools-install each time on w32
+(use-package pdf-tools
+  :demand t
+  :init
+  (pdf-tools-install)
+  :config
+  (add-hook 'pdf-isearch-minor-mode-hook (lambda () (ctrlf-local-mode -1)))
+  (use-package org-pdftools
+    :hook (org-mode . org-pdftools-setup-link)))
 
+;;(pdf-tools-install)
+
+;;(add-to-list 'auto-mode-alist '("\\.[pP][dD][fF]\\'" . pdf-view-mode))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; EO Emacs config
 (provide '.emacs)
