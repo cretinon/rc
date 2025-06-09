@@ -327,6 +327,7 @@
 (use-package git-gutter
   :ensure t
   :hook (after-init . global-git-gutter-mode))
+(global-set-key (kbd "<f6>") 'magit)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; manage emacs directories
