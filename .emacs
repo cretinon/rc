@@ -701,8 +701,9 @@
       `(tab-bar-tab ((t (:inherit default :background ,default-fg :foreground ,default-bg))))
       `(tab-bar-tab-inactive ((t (:inherit default :background ,default-bg :foreground ,inactive-fg)))))))
 (my/sync-tab-bar-to-theme)
-;; Turn on the tab-bar
 (tab-bar-mode 1)
+(global-set-key (kbd "<f3>") 'tab-previous)
+(global-set-key (kbd "<f4>") 'tab-next)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; EO Emacs config
