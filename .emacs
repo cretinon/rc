@@ -402,6 +402,11 @@
 ;; specific to org-reveal
 ;;   "C-c C-e w w"
 ;;   "C-c C-e w b"
+;; specific to tab bar
+;;   "C-x t 0" Close the current tab
+;;   "C-x t r" Rename the current tab
+;;   "C-x t 2" New tab
+;;   "C-x t o" Next tab
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; redefine key in order to use emacs in putty. See doc here : https://www.emacswiki.org/emacs/PuTTY#toc8
@@ -496,8 +501,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Menu & scrollbar
 (tool-bar-mode 0)
-(menu-bar-mode 1)
 (scroll-bar-mode 0)
+(menu-bar-mode 0)
+(advice-add 'menu-bar-open
+            :around
+            (lambda (orig-fun &rest args)
+              (menu-bar-mode 1)
+              (apply orig-fun args)
+              (menu-bar-mode -1)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Display line numbers
@@ -648,6 +659,7 @@
   (use-package org-pdftools
     :hook (org-mode . org-pdftools-setup-link)))
 ;;(pdf-tools-install)
+;;(add-to-list 'auto-mode-alist '("\\.[pP][dD][fF]\\'" . pdf-view-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; quickly select window by number
@@ -670,7 +682,18 @@
   :ensure t
   :config)
 
-;;(add-to-list 'auto-mode-alist '("\\.[pP][dD][fF]\\'" . pdf-view-mode))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; use tab
+(setq tab-bar-close-button-show nil
+      tab-bar-separator "|"
+      tab-bar-format '(tab-bar-format-tabs-groups
+                       tab-bar-separator
+                       tab-bar-format-align-right
+                       tab-bar-format-global))
+
+;; Turn on the tab-bar
+(tab-bar-mode 1)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; EO Emacs config
 (provide '.emacs)
