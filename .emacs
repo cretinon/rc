@@ -690,7 +690,17 @@
                        tab-bar-separator
                        tab-bar-format-align-right
                        tab-bar-format-global))
-
+(defun my/sync-tab-bar-to-theme ()
+  "Synchronize tab-bar faces with the current theme."
+  (interactive)
+  (let ((default-bg (face-background 'default))
+         (default-fg (face-foreground 'default))
+         (inactive-fg (face-foreground 'mode-line-inactive)))
+    (custom-set-faces
+      `(tab-bar ((t (:inherit default :background ,default-bg :foreground ,default-fg))))
+      `(tab-bar-tab ((t (:inherit default :background ,default-fg :foreground ,default-bg))))
+      `(tab-bar-tab-inactive ((t (:inherit default :background ,default-bg :foreground ,inactive-fg)))))))
+(my/sync-tab-bar-to-theme)
 ;; Turn on the tab-bar
 (tab-bar-mode 1)
 
