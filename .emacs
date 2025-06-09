@@ -647,8 +647,28 @@
   (add-hook 'pdf-isearch-minor-mode-hook (lambda () (ctrlf-local-mode -1)))
   (use-package org-pdftools
     :hook (org-mode . org-pdftools-setup-link)))
-
 ;;(pdf-tools-install)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; quicly switch to windows
+(setq winum-keymap
+    (let ((map (make-sparse-keymap)))
+      (define-key map (kbd "M-à") 'winum-select-window-0-or-10)
+      (define-key map (kbd "M-&") 'winum-select-window-1)
+      (define-key map (kbd "M-é") 'winum-select-window-2)
+      (define-key map (kbd "M-\N{Quotation mark}") 'winum-select-window-3)
+      (define-key map (kbd "M-'") 'winum-select-window-4)
+      (define-key map (kbd "M-(") 'winum-select-window-5)
+      (define-key map (kbd "M--") 'winum-select-window-6)
+      (define-key map (kbd "M-è") 'winum-select-window-7)
+      (define-key map (kbd "M-_") 'winum-select-window-8)
+      (define-key map (kbd "M-ç") 'winum-select-window-9)
+      map))
+(require 'winum)
+(winum-mode)
+(use-package winum
+  :ensure t
+  :config)
 
 ;;(add-to-list 'auto-mode-alist '("\\.[pP][dD][fF]\\'" . pdf-view-mode))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
