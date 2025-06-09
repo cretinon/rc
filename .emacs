@@ -707,5 +707,65 @@
 (global-set-key (kbd "<f4>") 'tab-next)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; cheat sheet
+(use-package cheatsheet
+  :ensure t
+  :config
+  (cheatsheet-add-group 'Function-key
+                        '(:key "w" :description "word")
+                        '(:key "s" :description "sentence")
+                        '(:key "p" :description "paragraph")
+                        '(:key "l" :description "line / list")
+                        '(:key "o" :description "symbol")
+                        '(:key "a" :description "argument")
+                        '(:key "x" :description "s-exp")
+                        '(:key "'" :description "string")
+                        '(:key "d" :description "function")
+                        '(:key "f" :description "function ... tree-sitter")
+                        '(:key "b" :description "loop ... tree-sitter")
+                        '(:key "u" :description "condition ... tree-sitter")
+                        '(:key "j" :description "smaller indent block")
+                        '(:key "k" :description "larger indent block")
+                        '(:key "i" :description "indented block")
+                        '(:key "c" :description "comment"))
+
+  (cheatsheet-add-group 'Symbols
+                        '(:key "(" :description "h d ... jump start s-expression")
+                        '(:key ")" :description "h f ... jump to end s-expression")
+                        '(:key "{" :description "h e ... forward expression")
+                        '(:key "}" :description "h r ... backward expression")
+                        '(:key "[" :description "h c ... backward expression")
+                        '(:key "]" :description "h v ... forward expression")
+                        '(:key "@" :description "h w ... play macro")
+                        '(:key "!" :description "h q ... shell command")
+                        '(:key "#" :description "h a ... reverse search (not `n')")
+                        '(:key "^" :description "h x ... start of line")
+                        '(:key "$" :description "h s ... end of line")
+                        '(:key "%" :description "h z ... jump paren start/end")
+                        '(:key "~" :description "h b ... change case")
+                        '(:key "`" :description "h g ... jump to mark. See `m'")
+                        '(:key "|" :description "h t ... goto column. Number prefix")
+                        )
+  (cheatsheet-add-group 'G
+                        '(:key "g ;" :description "goto last change")
+                        '(:key "g ," :description "return from last change")
+
+                        '(:key "g ." :description "goto definition")
+                        '(:key "g >" :description "goto definition other window")
+                        '(:key "g ," :description "return definition stack")
+                        '(:key "g <" :description "go forward (like definition)")
+                        '(:key "g /" :description "find references")
+                        '(:key "g ?" :description "find references and replace")
+                        '(:key "g h" :description "find apropos with LSP")
+
+                        '(:key "g d" :description "goto definition ... g b to go back")
+                        '(:key "g w" :description "fill to object, g q to fill and move")
+                        '(:key "g c" :description "comment line")
+                        '(:key "g e" :description "go backward word end")
+                        '(:key "g s" :description "visual search for line")
+                        '(:key "g r" :description "visual search/replace")))
+(global-set-key (kbd "<f1>") 'cheatsheet-show)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; EO Emacs config
 (provide '.emacs)
