@@ -650,20 +650,20 @@
 ;;(pdf-tools-install)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; quicly switch to windows
+;; quickly select window by number
 (setq winum-keymap
-    (let ((map (make-sparse-keymap)))
-      (define-key map (kbd "M-à") (lambda () (interactive) (winum-select-window-0-or-10)(golden-ratio)))
-      (define-key map (kbd "M-&") (lambda () (interactive) (winum-select-window-1)(golden-ratio)))
-      (define-key map (kbd "M-é") (lambda () (interactive) (winum-select-window-2)(golden-ratio)))
-      (define-key map (kbd "M-\N{Quotation mark}") (lambda () (interactive) (winum-select-window-3)(golden-ratio)))
-      (define-key map (kbd "M-'") (lambda () (interactive) (winum-select-window-4)(golden-ratio)))
-      (define-key map (kbd "M-(") (lambda () (interactive) (winum-select-window-5)(golden-ratio)))
-      (define-key map (kbd "M--") (lambda () (interactive) (winum-select-window-6)(golden-ratio)))
-      (define-key map (kbd "M-è") (lambda () (interactive) (winum-select-window-7)(golden-ratio)))
-      (define-key map (kbd "M-_") (lambda () (interactive) (winum-select-window-8)(golden-ratio)))
-      (define-key map (kbd "M-ç") (lambda () (interactive) (winum-select-window-9)(golden-ratio)))
-      map))
+      (let ((map (make-sparse-keymap)))
+	(define-key map (kbd "M-\N{LATIN SMALL LETTER A WITH GRAVE}") (lambda () (interactive) (winum-select-window-0-or-10)(golden-ratio)))
+	(define-key map (kbd "M-\N{ampersand}") (lambda () (interactive) (winum-select-window-1)(golden-ratio)))
+	(define-key map (kbd "M-\N{LATIN SMALL LETTER E WITH ACUTE}") (lambda () (interactive) (winum-select-window-2)(golden-ratio)))
+	(define-key map (kbd "M-\N{Quotation mark}") (lambda () (interactive) (winum-select-window-3)(golden-ratio)))
+	(define-key map (kbd "M-\N{apostrophe}") (lambda () (interactive) (winum-select-window-4)(golden-ratio)))
+	(define-key map (kbd "M-\N{left parenthesis}") (lambda () (interactive) (winum-select-window-5)(golden-ratio)))
+	(define-key map (kbd "M-\N{hyphen-minus}") (lambda () (interactive) (winum-select-window-6)(golden-ratio)))
+	(define-key map (kbd "M-\N{LATIN SMALL LETTER E WITH GRAVE}") (lambda () (interactive) (winum-select-window-7)(golden-ratio)))
+	(define-key map (kbd "M-\N{LOW LINE}") (lambda () (interactive) (winum-select-window-8)(golden-ratio)))
+	(define-key map (kbd "M-\N{LATIN SMALL LETTER C CEDILLA}") (lambda () (interactive) (winum-select-window-9)(golden-ratio)))
+	map))
 (require 'winum)
 (winum-mode)
 (use-package winum
