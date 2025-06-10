@@ -722,7 +722,10 @@
                         '(:key "p" :description "push")
                         '(:key "M-x magit-pull" :description "pull"))
   (cheatsheet-add-group 'Code
-                        '(:key "M-g M-g" :description "got line"))
+			'(:key "C-c ;" :description "comment region")
+			'(:key "C-c ." :description "uncomment region")
+                        '(:key "M-g M-g" :description "got line")
+			'(:key "ESC-%" :description "query replace")))
   (cheatsheet-add-group 'Emacs
                         '(:key "C-c SPC" :description "copy")
                         '(:key "C-v" :description "paste")
@@ -733,7 +736,7 @@
                         '(:key "C-SPC" :description "start selection")
                         '(:key "C-:" :description "undo")
                         '(:key "C-h b" :description "describe bindings")
-                        '(:key "ESC-%" :description "query replace")))
+			'(:key "C-c C-l" :description "reload init file"))
 (global-set-key (kbd "<C-f1>") 'cheatsheet-show)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
