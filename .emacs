@@ -366,22 +366,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; useful emacs keybinding below :
-;;   "C-h b" describes bindings
-;;   "C-x C-s" save buffer
-;;   "C-x 1" show only this buffer
-;;   "C-x 2" split horizontally
-;;   "C-x 3" split vertically
-;;   "C-x 0" kill buffer and close it
-;;   "C-x o" switch buffer
-;;   "C-/" undo
-;;   "C-s" search
-;;   "Esc-%" Query replace
-;;   "C-space" Start selection
-;;   "C-x r m" set bookmark
-;;   "C-x r l" list bookmarks
-;;   "M-x bookmark-save" save bookmarks
-;;   "M-g M-g" goto line
-;;   "F10" open menu bar
+
 ;; specific to magit :
 ;;   pre requisite : set username for repo : git config user.name "jacques@cretinon.fr"
 ;;   open : "C-x g"
@@ -403,11 +388,6 @@
 ;; specific to org-reveal
 ;;   "C-c C-e w w"
 ;;   "C-c C-e w b"
-;; specific to tab bar
-;;   "C-x t 0" Close the current tab
-;;   "C-x t r" Rename the current tab
-;;   "C-x t 2" New tab
-;;   "C-x t o" Next tab
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; redefine key in order to use emacs in putty. See doc here : https://www.emacswiki.org/emacs/PuTTY#toc8
@@ -712,59 +692,49 @@
   :ensure t
   :config
   (cheatsheet-add-group 'Function-key
-                        '(:key "w" :description "word")
-                        '(:key "s" :description "sentence")
-                        '(:key "p" :description "paragraph")
-                        '(:key "l" :description "line / list")
-                        '(:key "o" :description "symbol")
-                        '(:key "a" :description "argument")
-                        '(:key "x" :description "s-exp")
-                        '(:key "'" :description "string")
-                        '(:key "d" :description "function")
-                        '(:key "f" :description "function ... tree-sitter")
-                        '(:key "b" :description "loop ... tree-sitter")
-                        '(:key "u" :description "condition ... tree-sitter")
-                        '(:key "j" :description "smaller indent block")
-                        '(:key "k" :description "larger indent block")
-                        '(:key "i" :description "indented block")
-                        '(:key "c" :description "comment"))
-
-  (cheatsheet-add-group 'Symbols
-                        '(:key "(" :description "h d ... jump start s-expression")
-                        '(:key ")" :description "h f ... jump to end s-expression")
-                        '(:key "{" :description "h e ... forward expression")
-                        '(:key "}" :description "h r ... backward expression")
-                        '(:key "[" :description "h c ... backward expression")
-                        '(:key "]" :description "h v ... forward expression")
-                        '(:key "@" :description "h w ... play macro")
-                        '(:key "!" :description "h q ... shell command")
-                        '(:key "#" :description "h a ... reverse search (not `n')")
-                        '(:key "^" :description "h x ... start of line")
-                        '(:key "$" :description "h s ... end of line")
-                        '(:key "%" :description "h z ... jump paren start/end")
-                        '(:key "~" :description "h b ... change case")
-                        '(:key "`" :description "h g ... jump to mark. See `m'")
-                        '(:key "|" :description "h t ... goto column. Number prefix")
-                        )
-  (cheatsheet-add-group 'G
-                        '(:key "g ;" :description "goto last change")
-                        '(:key "g ," :description "return from last change")
-
-                        '(:key "g ." :description "goto definition")
-                        '(:key "g >" :description "goto definition other window")
-                        '(:key "g ," :description "return definition stack")
-                        '(:key "g <" :description "go forward (like definition)")
-                        '(:key "g /" :description "find references")
-                        '(:key "g ?" :description "find references and replace")
-                        '(:key "g h" :description "find apropos with LSP")
-
-                        '(:key "g d" :description "goto definition ... g b to go back")
-                        '(:key "g w" :description "fill to object, g q to fill and move")
-                        '(:key "g c" :description "comment line")
-                        '(:key "g e" :description "go backward word end")
-                        '(:key "g s" :description "visual search for line")
-                        '(:key "g r" :description "visual search/replace")))
-(global-set-key (kbd "<f1>") 'cheatsheet-show)
+                        '(:key "<F3>"  :description "previous Tab")
+                        '(:key "<F4>"  :description "next Tab")
+                        '(:key "<F5>"  :description "show/hide Neotree")
+                        '(:key "<F6>"  :description "open magit")
+                        '(:key "<F10>" :description "open menu bar")
+                        '(:key "C-<F1>" :description "open cheatsheet"))
+  (cheatsheet-add-group 'Tab
+                        '(:key "C-x t f" :description "open file in a new tab")
+			'(:key "C-x t 0" :description "close current tab")
+			'(:key "C-x t r" :description "rename tab")
+                        '(:key "<F4>" :description "next tab")
+                        '(:key "<F5>" :description "previous tab"))
+  (cheatsheet-add-group 'Window
+                        '(:key "M-0 9" :description "switch to window 0 .. 9")
+			'(:key "C-x o" :description "next window")
+                        '(:key "C-x 1" :description "close all windows except current one")
+                        '(:key "C-x 2" :description "split horizontally")
+                        '(:key "C-x 3" :description "split vertically")
+                        '(:key "C-x 0" :description "close current window"))
+  (cheatsheet-add-group 'Bookmark
+                        '(:key "C-x r m" :description "mark file in bookmark")
+                        '(:key "C-x r l" :description "list bookmark")
+                        '(:key "M-x bookmark-save" :description "save bookmark"))
+  (cheatsheet-add-group 'Magit
+                        '(:key "<F6>" :description "open magit")
+                        '(:key "C-c C-c" :description "commit")
+                        '(:key "s" :description "stage")
+                        '(:key "p" :description "push")
+                        '(:key "M-x magit-pull" :description "pull"))
+  (cheatsheet-add-group 'Code
+                        '(:key "M-g M-g" :description "got line"))
+  (cheatsheet-add-group 'Emacs
+                        '(:key "C-c SPC" :description "copy")
+                        '(:key "C-v" :description "paste")
+                        '(:key "C-x SPC" :description "cut")
+                        '(:key "C-x f" :description "open file")
+                        '(:key "C-x C-s" :description "save file")
+                        '(:key "C-s" :description "search")
+                        '(:key "C-SPC" :description "start selection")
+                        '(:key "C-:" :description "undo")
+                        '(:key "C-h b" :description "describe bindings")
+                        '(:key "ESC-%" :description "query replace")))
+(global-set-key (kbd "<C-f1>") 'cheatsheet-show)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; EO Emacs config
