@@ -27,6 +27,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; if we need to call debbuger on specific call
 ;;(debug-on-entry 'package-initialize)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; if we need to refresh melpa pkg list
 ;; package-refresh-contents
@@ -365,31 +366,6 @@
 (global-set-key (kbd "C-x SPC") 'kill-region)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; useful emacs keybinding below :
-
-;; specific to magit :
-;;   pre requisite : set username for repo : git config user.name "jacques@cretinon.fr"
-;;   open : "C-x g"
-;;   git add : Once file is saved, in buffer type "M-x magit-stage-file"
-;;   git rm :
-;;   git commit :
-;;   * move line selector on modified file(s) in "Unstaged changes"
-;;   * type 's' (in order to set to "staged changes")
-;;   * type 'c' 'c' (in order to commit)
-;;   * edit changelog message
-;;   * type "C-c C-c"
-;;   git push :
-;;   * move line selector on Unmerged into branched
-;;   * type 'P' (in order to push) and 'p' again
-;; specific to consult :
-;;   "M-s g" grep in code
-;;   "M-s l" search
-;;   "M-g i" function ref
-;; specific to org-reveal
-;;   "C-c C-e w w"
-;;   "C-c C-e w b"
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; redefine key in order to use emacs in putty. See doc here : https://www.emacswiki.org/emacs/PuTTY#toc8
 ;; PuTTY hack - terminal needs to be in SCO mode and connection>data>terminal>xterm-256color
 (if (eq system-uses-terminfo t)
@@ -493,7 +469,10 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Display line numbers
-(global-display-line-numbers-mode 1)
+(add-hook 'prog-mode-hook #'display-line-numbers-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; no more splash scren
 (setq-default inhibit-splash-screen t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -724,8 +703,12 @@
   (cheatsheet-add-group 'Code
 			'(:key "C-c ;" :description "comment region")
 			'(:key "C-c ." :description "uncomment region")
-                        '(:key "M-g M-g" :description "got line")
-			'(:key "ESC-%" :description "query replace")))
+			'(:key "ESC-%" :description "query replace")
+			;; tks to consult
+			'(:key "M-g i" :description "function reference")
+			'(:key "M-s l" :description "search")
+			'(:key "M-s g" :description "grep in code")
+                        '(:key "M-g M-g" :description "goto line")))
   (cheatsheet-add-group 'Emacs
                         '(:key "C-c SPC" :description "copy")
                         '(:key "C-v" :description "paste")
@@ -738,6 +721,10 @@
                         '(:key "C-h b" :description "describe bindings")
 			'(:key "C-c C-l" :description "reload init file"))
 (global-set-key (kbd "<C-f1>") 'cheatsheet-show)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Delete trailing whitespace before saving buffers
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; EO Emacs config
