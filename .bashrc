@@ -37,7 +37,7 @@ count_untracked() {
     _untrack__=$(git status --porcelain 2> /dev/null | grep "^??" | wc -l)
 
     _result__=""
-    
+
     if [ $_modified__ -ne 0 ]; then
 	_result__=$_result__"M:$_modified__"
     fi
@@ -45,7 +45,7 @@ count_untracked() {
 	if [ "a$_result__" = "a" ]; then
 	    _result__=$_result__"A:$_added__"
 	else
-	    _result__=$_result__" A:$_added__"  
+	    _result__=$_result__" A:$_added__"
 	fi
     fi
     if [ $_deleted__ -ne 0 ]; then
@@ -62,34 +62,35 @@ count_untracked() {
 	    _result__=$_result__" ?:$_untrack__"
 	fi
     fi
-															       
+
     echo $_result__
 }
 
 _my_wrap() {
-    # global var for debugging purpose
+    # global var : debugging purpose, do not edit, use -v and -d to enable
     VERBOSE=false
     DEBUG=false
     FUNC_LIST=()
 
-    CUR_DIR="/root/git/shell"
-    CUR_NAME="main"
+    # global var : where are we pulling libs ?
+    GIT_DIR="/root/git"
+    CUR_NAME=${FUNCNAME[0]}
 
-    unalias grep
-
-    # load conf files and libs
-    source $CUR_DIR/lib/lib_dev.sh
-
-    _load_conf "$CUR_DIR/conf/$CUR_NAME.conf"
+    # load our shell functions and all libs
+    if [ ! -e "$GIT_DIR/shell/lib_shell.sh" ]; then mkdir -p $GIT_DIR ; cd $GIT_DIR ; git clone git@github.com:cretinon/shell.git; cd - ;fi
+    source $GIT_DIR/shell/lib_shell.sh
+    _load_libs
 
     # process options
     if _process_opts "$@" ; then
-	_load_libs 
-	# process previous options in LIB user choose
-	if _exist $LIB; then _process_lib_$LIB "$OPTS"; fi
+	if _exist $LIB; then
+	    if _func_exist _process_lib_$LIB; then
+		_process_lib_$LIB "$OPTS"
+	    else
+		_warning "_process_lib_$LIB does not exist"
+	    fi
+	fi
     fi
-
-    alias grep='grep --color $@ 2>/dev/null'
 }
 
 PS1="\[\033[33m\]\u\[\033[00m\]@\[\033[35m\]\h\[\033[00m\] \w\[\033[32m\]\$(parse_git_branch)\[\033[00m\]\$(count_untracked) $ "
