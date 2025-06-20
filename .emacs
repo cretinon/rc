@@ -276,11 +276,11 @@
 ;; Delete trailing whitespace before saving buffers
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Magit ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; magit (use git inside emacs)
+;; https://www.youtube.com/watch?v=qPfJoeQCIvA
 (use-package magit
   :ensure t
   :commands magit-get-current-branch
@@ -376,17 +376,17 @@
   (cape-dict-case-replace nil)
   (cape-dabbrev-buffer-function 'cape-same-mode-buffers)
   :init
-  (defun gopar/cape-dict-only-in-comments ()
-    (cape-wrap-inside-comment 'cape-dict))
-  (defun gopar/cape-dict-only-in-strings ()
-    (cape-wrap-inside-string 'cape-dict))
-  (defun gopar/cape-yasnippet-keyword-dabbrev ()
-    (cape-wrap-super #'yasnippet-capf #'cape-keyword #'cape-dabbrev))
-  (add-to-list 'completion-at-point-functions #'cape-file)
-  (add-to-list 'completion-at-point-functions #'gopar/cape-yasnippet-keyword-dabbrev)
-  (add-to-list 'completion-at-point-functions #'gopar/cape-dict-only-in-strings)
-  (add-to-list 'completion-at-point-functions #'gopar/cape-dict-only-in-comments))
-
+;;  (defun gopar/cape-dict-only-in-comments ()
+;;    (cape-wrap-inside-comment 'cape-dict))
+;;  (defun gopar/cape-dict-only-in-strings ()
+;;    (cape-wrap-inside-string 'cape-dict))
+;;  (defun gopar/cape-yasnippet-keyword-dabbrev ()
+;;    (cape-wrap-super #'yasnippet-capf #'cape-keyword #'cape-dabbrev))
+;;  (add-to-list 'completion-at-point-functions #'cape-file)
+;;  (add-to-list 'completion-at-point-functions #'gopar/cape-yasnippet-keyword-dabbrev)
+;;  (add-to-list 'completion-at-point-functions #'gopar/cape-dict-only-in-strings)
+;;  (add-to-list 'completion-at-point-functions #'gopar/cape-dict-only-in-comments))
+)
 ;; not sure we need it
 ;;(use-package orderless
 ;;  :ensure t
@@ -498,6 +498,14 @@
          (csv-mode . csv-align-mode)
 	 )
   )
+;;markdown
+(use-package markdown-mode
+  :ensure t
+  :mode ("README\\.md\\'" . gfm-mode)
+  :init (setq markdown-command "multimarkdown")
+  :bind (:map markdown-mode-map
+         ("C-c C-e" . markdown-do)))
+
 ;; pdf : have to M-x pdt-tools-install each time on w32
 (use-package pdf-tools
   :demand t
