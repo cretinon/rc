@@ -1,6 +1,11 @@
 # Get last rc files
 ## Get sources
-* wget -q https://github.com/cretinon/rc/archive/refs/heads/main.tar.gz -O - | tar -zxvf - -C /tmp/
+
+``` shell
+wget -q https://github.com/cretinon/rc/archive/refs/heads/main.tar.gz -O - | tar -zxvf - -C /tmp/
+```
 
 ## Clone repo
-* git clone https://github.com/cretinon/rc.git
+``` shell
+git clone https://github.com/cretinon/rc.git
+```
