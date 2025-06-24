@@ -9,3 +9,4 @@ wget -q https://github.com/cretinon/rc/archive/refs/heads/main.tar.gz -O - | tar
 ``` shell
 git clone https://github.com/cretinon/rc.git
 ```
+# WSL specific
