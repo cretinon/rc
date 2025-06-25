@@ -1,6 +1,5 @@
 # Get last rc files
 ## Get sources
-
 ``` shell
 wget -q https://github.com/cretinon/rc/archive/refs/heads/main.tar.gz -O - | tar -zxvf - -C /tmp/
 ```
@@ -10,3 +9,7 @@ wget -q https://github.com/cretinon/rc/archive/refs/heads/main.tar.gz -O - | tar
 git clone https://github.com/cretinon/rc.git
 ```
 # WSL specific
+Launch wsl in admin cmd.exe
+``` shell
+wsl --exec dbus-launch true
+```
