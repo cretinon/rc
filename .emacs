@@ -123,24 +123,25 @@
 (global-set-key (kbd "<f4>") 'tab-next)
 
 ;; quickly select window by number
-(setq winum-keymap
-      (let ((map (make-sparse-keymap)))
-	(define-key map (kbd "M-\N{LATIN SMALL LETTER A WITH GRAVE}") (lambda () (interactive) (winum-select-window-0-or-10)(golden-ratio)))
-	(define-key map (kbd "M-\N{ampersand}") (lambda () (interactive) (winum-select-window-1)(golden-ratio)))
-	(define-key map (kbd "M-\N{LATIN SMALL LETTER E WITH ACUTE}") (lambda () (interactive) (winum-select-window-2)(golden-ratio)))
-	(define-key map (kbd "M-\N{Quotation mark}") (lambda () (interactive) (winum-select-window-3)(golden-ratio)))
-	(define-key map (kbd "M-\N{apostrophe}") (lambda () (interactive) (winum-select-window-4)(golden-ratio)))
-	(define-key map (kbd "M-\N{left parenthesis}") (lambda () (interactive) (winum-select-window-5)(golden-ratio)))
-	(define-key map (kbd "M-\N{hyphen-minus}") (lambda () (interactive) (winum-select-window-6)(golden-ratio)))
-	(define-key map (kbd "M-\N{LATIN SMALL LETTER E WITH GRAVE}") (lambda () (interactive) (winum-select-window-7)(golden-ratio)))
-	(define-key map (kbd "M-\N{LOW LINE}") (lambda () (interactive) (winum-select-window-8)(golden-ratio)))
-	(define-key map (kbd "M-\N{LATIN SMALL LETTER C CEDILLA}") (lambda () (interactive) (winum-select-window-9)(golden-ratio)))
-	map))
-(require 'winum)
-(winum-mode)
-(use-package winum
-  :ensure t
-  :config)
+;; (use-package winum
+;;   :ensure t
+;;   :config)
+;; (setq winum-keymap
+;;       (let ((map (make-sparse-keymap)))
+;; 	(define-key map (kbd "M-\N{LATIN SMALL LETTER A WITH GRAVE}") (lambda () (interactive) (winum-select-window-0-or-10)(golden-ratio)))
+;; 	(define-key map (kbd "M-\N{ampersand}") (lambda () (interactive) (winum-select-window-1)(golden-ratio)))
+;; 	(define-key map (kbd "M-\N{LATIN SMALL LETTER E WITH ACUTE}") (lambda () (interactive) (winum-select-window-2)(golden-ratio)))
+;; 	(define-key map (kbd "M-\N{Quotation mark}") (lambda () (interactive) (winum-select-window-3)(golden-ratio)))
+;; 	(define-key map (kbd "M-\N{apostrophe}") (lambda () (interactive) (winum-select-window-4)(golden-ratio)))
+;; 	(define-key map (kbd "M-\N{left parenthesis}") (lambda () (interactive) (winum-select-window-5)(golden-ratio)))
+;; 	(define-key map (kbd "M-\N{hyphen-minus}") (lambda () (interactive) (winum-select-window-6)(golden-ratio)))
+;; 	(define-key map (kbd "M-\N{LATIN SMALL LETTER E WITH GRAVE}") (lambda () (interactive) (winum-select-window-7)(golden-ratio)))
+;; 	(define-key map (kbd "M-\N{LOW LINE}") (lambda () (interactive) (winum-select-window-8)(golden-ratio)))
+;; 	(define-key map (kbd "M-\N{LATIN SMALL LETTER C CEDILLA}") (lambda () (interactive) (winum-select-window-9)(golden-ratio)))
+;; 	map))
+;; (require 'winum)
+;; (winum-mode)
+
 
 ;; highlight block of code
 (use-package indent-guide
@@ -515,14 +516,14 @@
          ("C-c C-e" . markdown-do)))
 
 ;; pdf : have to M-x pdt-tools-install each time on w32
-(use-package pdf-tools
-  :demand t
-  :init
-  (pdf-tools-install)
-  :config
-  (add-hook 'pdf-isearch-minor-mode-hook (lambda () (ctrlf-local-mode -1)))
-  (use-package org-pdftools
-    :hook (org-mode . org-pdftools-setup-link)))
+;; (use-package pdf-tools
+;;   :demand t
+;;   :init
+;;   (pdf-tools-install)
+;;   :config
+;;   (add-hook 'pdf-isearch-minor-mode-hook (lambda () (ctrlf-local-mode -1)))
+;;   (use-package org-pdftools
+;;     :hook (org-mode . org-pdftools-setup-link)))
 ;;(pdf-tools-install)
 ;;(add-to-list 'auto-mode-alist '("\\.[pP][dD][fF]\\'" . pdf-view-mode))
 
