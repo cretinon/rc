@@ -71,6 +71,7 @@ _my_wrap() {
     VERBOSE=false
     DEBUG=false
     FUNC_LIST=()
+    unset LIB
 
     # global var : where are we pulling libs ?
     GIT_DIR="/root/git"

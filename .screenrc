@@ -10,8 +10,10 @@ silencewait 15
 autodetach on
 escape ^Ww
 
-bindkey -t "^[[D" prev
-bindkey -t "^[[C" next # ctrl+arrow
+#bindkey -t "^[[D" prev
+#bindkey -t "^[[C" next # ctrl+arrow
+#bindkey -t "^I" next # ctrl+arrow
+bindkey ^[O5 next
 
 # C-a A : rename tab
 
