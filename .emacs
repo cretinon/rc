@@ -173,7 +173,6 @@
       (define-key input-decode-map "\e[C" [S-right])
       (define-key input-decode-map "\e[A" [S-up])
       (define-key input-decode-map "\e[B" [S-down])
-      (define-key input-decode-map "\e[C" [S-right])
       (define-key input-decode-map "\e[I" [prior])
       (define-key input-decode-map "\e[G" [next])
       (define-key input-decode-map "\e[M" [f1])
@@ -224,6 +223,9 @@
       (define-key input-decode-map "\e[j" [S-f12])
       (define-key input-decode-map "\e[v" [C-f12])
       (define-key input-decode-map "\e\e[X" [M-f12])))
+
+;; Enable transient mark mode
+(transient-mark-mode 1)
 
 ;; xterm
 (use-package xterm-color
@@ -311,6 +313,11 @@
   :ensure t
   :hook (after-init . global-git-gutter-mode))
 (global-set-key (kbd "<f6>") 'magit)
+
+;; forge <= seems we can't install forge on debian sid like this, just apt-get install elpa-magit-forge instead
+;; (use-package forge
+;;   :ensure t
+;;   :init)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Completion ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
