@@ -16,8 +16,20 @@ cd git
 ``` shell
 wget -q https://github.com/cretinon/rc/archive/refs/heads/main.tar.gz -O - | tar -zxvf - -C /tmp/
 ```
-
 ## Clone repo
 ``` shell
 git clone https://github.com/cretinon/rc.git
+```
+# Link rc files
+``` shell
+cd
+rm -rf .bashrc
+ln -s git/rc/.bashrc .
+ln -s git/rc/.screenrc .
+ln -s git/rc/.emacs .
+mkdir .emacs.d
+cd .emacs.d
+ln -s ../git.rc/.emacs.d/snippets .
+cd
+source .bashrc
 ```
