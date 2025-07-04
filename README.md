@@ -1,6 +1,6 @@
 # Prerequisites
 ## WSL specific
-Launch wsl in admin cmd.exe
+* Launch wsl in admin cmd.exe
 ``` shell
 wsl --exec dbus-launch true
 ```
@@ -11,13 +11,13 @@ apt-get install git ssh apt-show-versions emacs elpa-magit-forge screen
 ```
 ## Logging into host with Putty
 ### Download
-Donwload & install from https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+* Donwload & install from https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
 ### Configure Putty
 * Terminal > Keyboard > The function key and escape : SCO
 * Window > Translation > Remote character set : UTF-8
 * Connection > SSH > X11 > Enable X11 forwarding
 ### Install Xming
-Download & install from https://sourceforge.net/projects/xming/
+* Download & install from https://sourceforge.net/projects/xming/
 # Get last rc files
 ## Get sources
 ``` shell
@@ -51,4 +51,18 @@ source .bashrc
 ## Emacs
 * Run emacs then ```M-x all-the-icons-install-fonts```
 ## Forge
-* TBD
+* create Github token https://github.com/settings/tokens
+* add in ~/.authinfo
+```
+machine api.github.com login cretinon^forge password changeme
+```
+* ```M-x forge-add-repository```
+or
+* ```M-x forge-add-user-repository ```
+then check with
+* ```M-x forge-dispatch l r```
+## GPTel
+* add in ~/.authinfo
+```
+machine api.openai.com login apikey password changeme
+```
