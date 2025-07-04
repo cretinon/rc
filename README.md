@@ -7,17 +7,30 @@ wsl --exec dbus-launch true
 ## Debian like
 ``` shell
 apt-get update
-apt-get install git ssh
-mkdir git
-cd git
+apt-get install git ssh apt-show-versions emacs elpa-magit-forge screen
 ```
+## Logging into host with Putty
+### Download
+Donwload & install from https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+### Configure Putty
+* Terminal > Keyboard > The function key and escape : SCO
+* Window > Translation > Remote character set : UTF-8
+* Connection > SSH > X11 > Enable X11 forwarding
+### Install Xming
+Download & install from https://sourceforge.net/projects/xming/
 # Get last rc files
 ## Get sources
 ``` shell
+cd
+mkdir git
+cd git
 wget -q https://github.com/cretinon/rc/archive/refs/heads/main.tar.gz -O - | tar -zxvf - -C /tmp/
 ```
 ## Clone repo
 ``` shell
+cd
+mkdir git
+cd git
 git clone https://github.com/cretinon/rc.git
 ```
 # Link rc files
@@ -29,7 +42,13 @@ ln -s git/rc/.screenrc .
 ln -s git/rc/.emacs .
 mkdir .emacs.d
 cd .emacs.d
-ln -s ../git.rc/.emacs.d/snippets .
+ln -s ../git/rc/.emacs.d/snippets .
 cd
+touch .emacs.custom
 source .bashrc
 ```
+# Post install
+## Emacs
+* Run emacs then ```M-x all-the-icons-install-fonts```
+## Forge
+* TBD
