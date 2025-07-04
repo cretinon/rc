@@ -9,6 +9,12 @@ wsl --exec dbus-launch true
 apt-get update
 apt-get install git ssh apt-show-versions emacs elpa-magit-forge screen
 ```
+## ssh key
+* Create a pub key if never done
+``` shell
+ssh-keygen -t rsa
+```
+* Push pub key to Github : https://github.com/settings/keys
 ## Logging into host with Putty
 ### Download
 * Donwload & install from https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
@@ -51,16 +57,19 @@ source .bashrc
 ## Emacs
 * Run emacs then ```M-x all-the-icons-install-fonts```
 ## Forge
-* create Github token https://github.com/settings/tokens
-* add in ~/.authinfo
+* Create Github token https://github.com/settings/tokens
+* Add in ~/.authinfo
 ```
 machine api.github.com login cretinon^forge password changeme
 ```
-* ```M-x forge-add-repository```
-or
-* ```M-x forge-add-user-repository ```
-then check with
-* ```M-x forge-dispatch l r```
+* In emacs, add a repo
+```M-x forge-add-repository``` or ```M-x forge-add-user-repository ```
+* Then check with
+```M-x forge-dispatch l r```
+* We may need to setup Github access for repo
+``` shell
+git remote set-url origin git@github.com:cretinon/rc.git
+```
 ## GPTel
 * add in ~/.authinfo
 ```
