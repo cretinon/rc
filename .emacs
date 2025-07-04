@@ -44,13 +44,13 @@
 ;; Menu & scrollbar
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
-(menu-bar-mode 0)
-(advice-add 'menu-bar-open
-            :around
-            (lambda (orig-fun &rest args)
-              (menu-bar-mode 1)
-              (apply orig-fun args)
-              (menu-bar-mode -1)))
+(menu-bar-mode 1)
+;; (advice-add 'menu-bar-open
+;;             :around
+;;             (lambda (orig-fun &rest args)
+;;               (menu-bar-mode 1)
+;;               (apply orig-fun args)
+;;               (menu-bar-mode -1)))
 
 ;; no more splash scren
 (setq-default inhibit-splash-screen t)
