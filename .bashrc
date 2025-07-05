@@ -17,6 +17,8 @@ alias grep='grep --color $@ 2>/dev/null'
 alias rc='source ~/.bashrc'
 alias ra='source ~/.aliases'
 
+alias top='btop'
+
 alias my_ip='curl ipinfo.io/ip && echo ""'
 alias drop_cache='sync; echo 3 > /proc/sys/vm/drop_caches'
 alias get_last_rc='wget -q https://github.com/cretinon/rc/archive/refs/heads/main.tar.gz -O - | tar -zxvf - -C /tmp/'
