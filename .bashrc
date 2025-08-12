@@ -76,7 +76,7 @@ _my_wrap() {
     unset LIB
 
     # global var : where are we pulling libs ?
-    GIT_DIR="~/git"
+    GIT_DIR="${HOME}/git"
     CUR_NAME=${FUNCNAME[0]}
 
     # load our shell functions and all libs
