@@ -59,11 +59,13 @@ source .bashrc
 ## Emacs
 * Run emacs then ```M-x all-the-icons-install-fonts```
 ## Forge
+we may have already done
 * Create Github token https://github.com/settings/tokens
 * Add in ~/.authinfo
 ```
 machine api.github.com login cretinon^forge password changeme
 ```
+All those info are now in .authinfo.gpg
 * In emacs, add a repo
 ```M-x forge-add-repository``` or ```M-x forge-add-user-repository ```
 * Then check with
