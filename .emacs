@@ -314,6 +314,10 @@
   :hook (after-init . global-git-gutter-mode))
 (global-set-key (kbd "<f6>") 'magit)
 
+;; need 2 lines below in order to magit search in authinfo for user/pass
+(add-hook 'magit-process-find-password-functions
+            'magit-process-password-auth-source)
+
 ;; forge <= seems we can't install forge on debian sid like this, just apt-get install elpa-magit-forge instead
 ;; (use-package forge
 ;;   :ensure t
