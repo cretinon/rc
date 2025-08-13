@@ -106,4 +106,5 @@ url = https://user_name%40domain_name.com@github.com/cretinon/REPO.git
 4. open magit : CTRL-x g
 5. go on modified file then s (for stage)
 6. go on modified file then CTRL-c CTRL-c c c (for commit)
-7. edit commit message and save it : CTRL-x CTRL-s
+7. edit commit message, save it and go to magit : CTRL-x CTRL-s CTRL-c CTRL-c
+8. go on unmerge and push : P p
