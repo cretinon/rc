@@ -99,3 +99,11 @@ then change it with
 ```
 url = https://user_name%40domain_name.com@github.com/cretinon/REPO.git
 ```
+## Usefull Magit tips
+1. first of all : M-x magit-pull
+2. edit files
+3. save files CTRL-x CTRL-s
+4. open magit : CTRL-x g
+5. go on modified file then s (for stage)
+6. go on modified file then CTRL-c CTRL-c c c (for commit)
+7. edit commit message and save it : CTRL-x CTRL-s
