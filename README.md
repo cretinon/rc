@@ -82,8 +82,7 @@ In order to not have .authinfo with all access on a host, that file will be remo
 In order to decrypt it :
 
 ``` shell
-cd
-gpg .authinfo.gpg
+_decrypt_authinfo
 ```
 
 ## Cloning a Github repo
