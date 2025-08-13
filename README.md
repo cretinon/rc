@@ -79,7 +79,7 @@ machine api.openai.com login apikey password changeme
 ```
 # Git Emacs Github and user/pass management (.authinfo)
 ## How does it work ?
-.authinfo is used only by emacs/magit, not by git in command line
+.authinfo is used only by emacs/magit, not by git in command line\
 we do not need to decrypt the file, emacs will does alone
 ## Cloning a Github repo
 If cloning a repo using https like :
