@@ -68,12 +68,6 @@ count_untracked() {
     echo $_result__
 }
 
-_decrypt_authinfo () {
-    cd
-    gpg .authinfo.gpg
-    cd -
-}
-
 _my_wrap() {
     # global var : debugging purpose, do not edit, use -v and -d to enable
     VERBOSE=false
