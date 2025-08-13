@@ -76,3 +76,27 @@ git remote set-url origin git@github.com:cretinon/rc.git
 ```
 machine api.openai.com login apikey password changeme
 ```
+# Git Emacs Github and user/pass management (.authinfo)
+In order to not have .authinfo with all access on a host, that file will be removed when logout (.bash_logout)
+In order to decrypt it :
+
+``` shell
+cd
+gpg .authinfo.gpg
+```
+
+## Cloning a Github repo
+If cloning a repo using https like :
+
+``` shell
+git clone https://github.com/cretinon/REPO.git
+```
+don't forget to edit .git/config, find line
+
+```
+url = https://github.com/cretinon/REPO.git
+```
+then change it with
+```
+url = https://user_name%40domain_name.com@github.com/cretinon/REPO.git
+```
