@@ -101,5 +101,3 @@ then change it with
 ```
 url = https://user_name%40domain_name.com@github.com/cretinon/REPO.git
 ```
-
-.authinfo not working
