@@ -78,8 +78,9 @@ git remote set-url origin git@github.com:cretinon/rc.git
 machine api.openai.com login apikey password changeme
 ```
 # Git Emacs Github and user/pass management (.authinfo)
-In order to not have .authinfo with all access on a host, that file will be removed when logout (.bash_logout)
-In order to decrypt it :
+1. In order to not have .authinfo with all access on a host, that file will be removed when logout (.bash_logout)
+
+2. In order to decrypt it :
 
 ``` shell
 _decrypt_authinfo
