@@ -47,6 +47,7 @@ ln -s git/rc/.bashrc .
 ln -s git/rc/.screenrc .
 ln -s git/rc/.emacs .
 ln -s git/rc/.bash_logout .
+ln -s git/rc/.authinfo.gpg .
 mkdir .emacs.d
 cd .emacs.d
 ln -s ../git/rc/.emacs.d/snippets .
