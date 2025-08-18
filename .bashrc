@@ -24,6 +24,9 @@ alias drop_cache='sync; echo 3 > /proc/sys/vm/drop_caches'
 alias get_last_rc='wget -q https://github.com/cretinon/rc/archive/refs/heads/main.tar.gz -O - | tar -zxvf - -C /tmp/'
 alias clone_rc='git clone https://github.com/cretinon/rc.git'
 
+# because cursor is too big when exporting display with xming
+export XCURSOR_SIZE=16
+
 function ssh-screen() {
     screen -t $1 ssh $@
 }
