@@ -37,7 +37,7 @@ wget -q https://github.com/cretinon/rc/archive/refs/heads/main.tar.gz -O - | tar
 cd
 mkdir git
 cd git
-git clone https://github.com/cretinon/rc.git
+git clone https://USER_NAME%40DOMAIN_NAME.COUNTRY@github.com/cretinon/rc.git
 ```
 # Link rc files
 ``` shell
@@ -85,7 +85,7 @@ machine api.openai.com login apikey password changeme
 we do not need to decrypt the file, emacs will does alone\
 be carefull, sometimes, if we launch emacs in background (^z bg), prompt for passphrase will fail
 ## Cloning a Github repo
-If cloning a repo using https like :
+Always clone a repo using https like :
 
 ``` shell
 git clone https://USER_NAME%40DOMAIN_NAME.COUNTRY@github.com/cretinon/REPO.git
