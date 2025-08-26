@@ -13,6 +13,7 @@ alias l='ls $LS_OPTIONS -lAi'
 alias df='df -h'
 
 alias grep='grep --color --text $@ 2>/dev/null'
+alias egrep='egrep --color --text $@ 2>/dev/null'
 
 alias rc='source ~/.bashrc'
 alias ra='source ~/.aliases'
