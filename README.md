@@ -37,7 +37,7 @@ wget -q https://github.com/cretinon/rc/archive/refs/heads/main.tar.gz -O - | tar
 cd
 mkdir git
 cd git
-git clone https://github.com/cretinon/rc.git
+git clone https://USER_NAME%40DOMAIN_NAME.COUNTRY@github.com/cretinon/rc.git
 ```
 # Link rc files
 ``` shell
@@ -85,19 +85,10 @@ machine api.openai.com login apikey password changeme
 we do not need to decrypt the file, emacs will does alone\
 be carefull, sometimes, if we launch emacs in background (^z bg), prompt for passphrase will fail
 ## Cloning a Github repo
-If cloning a repo using https like :
+Always clone a repo using https like :
 
 ``` shell
-git clone https://github.com/cretinon/REPO.git
-```
-don't forget to edit .git/config, find line
-
-```
-url = https://github.com/cretinon/REPO.git
-```
-then change it with
-```
-url = https://user_name%40domain_name.com@github.com/cretinon/REPO.git
+git clone https://USER_NAME%40DOMAIN_NAME.COUNTRY@github.com/cretinon/REPO.git
 ```
 ## Usefull Magit tips
 1. first of all : M-x magit-pull then p
@@ -108,3 +99,6 @@ url = https://user_name%40domain_name.com@github.com/cretinon/REPO.git
 6. go on modified file then CTRL-c CTRL-c c c (for commit)
 7. edit commit message, save it and go to magit : CTRL-x CTRL-s CTRL-c CTRL-c
 8. go on unmerge and push : P p
+
+# Creating new repository
+Once new repository is created, add access using https://github.com/settings/personal-access-tokens
