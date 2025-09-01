@@ -45,6 +45,7 @@
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 (menu-bar-mode 1)
+(tab-line-mode 1)
 ;; (advice-add 'menu-bar-open
 ;;             :around
 ;;             (lambda (orig-fun &rest args)
