@@ -527,6 +527,11 @@
   :bind (:map markdown-mode-map
          ("C-c C-e" . markdown-do)))
 
+;; shell
+(setq sh-basic-offset 4
+      sh-indentation 4)
+
+
 ;; pdf : have to M-x pdt-tools-install each time on w32
 ;; (use-package pdf-tools
 ;;   :demand t
