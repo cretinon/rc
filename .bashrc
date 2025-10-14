@@ -21,7 +21,7 @@ alias ra='source ~/.aliases'
 alias top='btop'
 
 #because we don't care about ssl check
-alias curl='curl -k'
+alias curl='curl -s -k'
 
 alias my_ip='curl ipinfo.io/ip && echo ""'
 alias drop_cache='sync; echo 3 > /proc/sys/vm/drop_caches'
