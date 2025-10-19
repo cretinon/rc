@@ -63,6 +63,13 @@
   :custom
   (golden-ratio-exclude-modes '(occur-mode)))
 
+;; white-space mode https://www.gnu.org/software/emacs/manual/html_node/emacs/Useless-Whitespace.html
+(require 'whitespace)
+(setq-default whitespace-style '(face trailing tabs empty indentation::space))
+;;(setq-default whitespace-newline)
+(global-whitespace-mode 1)
+
+
 ;; dont have to type yes and no anymore, just y or n
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -405,7 +412,7 @@
 ;; Autocompletion
 (use-package cape
   :ensure t
-  :bind ("TAB" . cape-dabbrev)
+  :bind ("<backtab>" . cape-dabbrev)
   :custom
   (cape-dict-case-replace nil)
   (cape-dabbrev-buffer-function 'cape-same-mode-buffers)
@@ -549,8 +556,9 @@
          ("C-c C-e" . markdown-do)))
 
 ;; shell
-(setq sh-basic-offset 4
-      sh-indentation 4)
+;;(setq sh-basic-offset 4
+;;      sh-indentation 4)
+(setq-default indent-tabs-mode nil)
 
 
 ;; pdf : have to M-x pdt-tools-install each time on w32
