@@ -636,7 +636,8 @@
                         '(:key "M-g i" :description "function reference")
                         '(:key "M-s l" :description "search")
                         '(:key "M-s g" :description "grep in code")
-                        '(:key "M-g M-g" :description "goto line")))
+                        '(:key "M-g M-g" :description "goto line")
+                        '(:key "M-x untabify" :description "remove tabs")))
   (cheatsheet-add-group 'Emacs
                         '(:key "C-c SPC" :description "copy")
                         '(:key "C-v" :description "paste")
