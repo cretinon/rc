@@ -48,28 +48,28 @@ count_untracked() {
     _result__=""
 
     if [ $_modified__ -ne 0 ]; then
-	_result__=$_result__"M:$_modified__"
+        _result__=$_result__"M:$_modified__"
     fi
     if [ $_added__ -ne 0 ]; then
-	if [ "a$_result__" = "a" ]; then
-	    _result__=$_result__"A:$_added__"
-	else
-	    _result__=$_result__" A:$_added__"
-	fi
+        if [ "a$_result__" = "a" ]; then
+            _result__=$_result__"A:$_added__"
+        else
+            _result__=$_result__" A:$_added__"
+        fi
     fi
     if [ $_deleted__ -ne 0 ]; then
-	if [ "a$_result__" = "a" ]; then
-	    _result__=$_result__"D:$_deleted__"
-	else
-	    _result__=$_result__" D:$_deleted__"
-	fi
+        if [ "a$_result__" = "a" ]; then
+            _result__=$_result__"D:$_deleted__"
+        else
+            _result__=$_result__" D:$_deleted__"
+        fi
     fi
     if [ $_untrack__ -ne 0 ]; then
-	if [ "a$_result__" = "a" ]; then
-	    _result__=$_result__"?:$_untrack__"
-	else
-	    _result__=$_result__" ?:$_untrack__"
-	fi
+        if [ "a$_result__" = "a" ]; then
+            _result__=$_result__"?:$_untrack__"
+        else
+            _result__=$_result__" ?:$_untrack__"
+        fi
     fi
 
     echo $_result__
@@ -93,13 +93,13 @@ _my_wrap() {
 
     # process options
     if _process_opts "$@" ; then
-	if _exist $LIB; then
-	    if _func_exist _process_lib_$LIB; then
-		_process_lib_$LIB "$OPTS"
-	    else
-		_warning "_process_lib_$LIB does not exist"
-	    fi
-	fi
+        if _exist $LIB; then
+            if _func_exist _process_lib_$LIB; then
+                _process_lib_$LIB "$OPTS"
+            else
+                _warning "_process_lib_$LIB does not exist"
+            fi
+        fi
     fi
 }
 
