@@ -32,10 +32,11 @@ alias clone_rc='git clone https://github.com/cretinon/rc.git'
 export XCURSOR_SIZE=16
 
 # because GPG is confused where to read input from
-export GPG_TTY=$(tty)
+GPG_TTY=$(tty)
+export GPG_TTY
 
 function ssh-screen() {
-    screen -t $1 ssh $@
+    screen -t "$1" ssh "$@"
 }
 
 parse_git_branch() {
@@ -43,31 +44,31 @@ parse_git_branch() {
 }
 
 count_untracked() {
-    _modified__=$(git status --porcelain 2> /dev/null | grep "^ M" | wc -l)
-    _added__=$(git status --porcelain 2> /dev/null | grep "^ A" | wc -l)
-    _deleted__=$(git status --porcelain 2> /dev/null | grep "^ D" | wc -l)
-    _untrack__=$(git status --porcelain 2> /dev/null | grep "^??" | wc -l)
+    _modified__=$(git status --porcelain 2> /dev/null | grep -c "^ M")
+    _added__=$(git status --porcelain 2> /dev/null | grep -c "^ A")
+    _deleted__=$(git status --porcelain 2> /dev/null | grep -c "^ D")
+    _untrack__=$(git status --porcelain 2> /dev/null | grep -c "^??")
 
     _result__=""
 
-    if [ $_modified__ -ne 0 ]; then
+    if [ "$_modified__" -ne 0 ]; then
         _result__=$_result__"M:$_modified__"
     fi
-    if [ $_added__ -ne 0 ]; then
+    if [ "$_added__" -ne 0 ]; then
         if [ "a$_result__" = "a" ]; then
             _result__=$_result__"A:$_added__"
         else
             _result__=$_result__" A:$_added__"
         fi
     fi
-    if [ $_deleted__ -ne 0 ]; then
+    if [ "$_deleted__" -ne 0 ]; then
         if [ "a$_result__" = "a" ]; then
             _result__=$_result__"D:$_deleted__"
         else
             _result__=$_result__" D:$_deleted__"
         fi
     fi
-    if [ $_untrack__ -ne 0 ]; then
+    if [ "$_untrack__" -ne 0 ]; then
         if [ "a$_result__" = "a" ]; then
             _result__=$_result__"?:$_untrack__"
         else
@@ -75,30 +76,30 @@ count_untracked() {
         fi
     fi
 
-    echo $_result__
+    echo "$_result__"
 }
 
 _my_wrap() {
     # global var : debugging purpose, do not edit, use -v and -d to enable
-    VERBOSE=false
-    DEBUG=false
-    FUNC_LIST=()
+    export VERBOSE=false
+    export DEBUG=false
+    export FUNC_LIST=()
     unset LIB
 
     # global var : where are we pulling libs ?
-    GIT_DIR="${HOME}/git"
-    CUR_NAME=${FUNCNAME[0]}
+    export GIT_DIR="${HOME}/git"
+    export CUR_NAME=${FUNCNAME[0]}
 
     # load our shell functions and all libs
-    if [ ! -e "$GIT_DIR/shell/lib_shell.sh" ]; then mkdir -p $GIT_DIR ; cd $GIT_DIR ; git clone git@github.com:cretinon/shell.git; cd - ;fi
-    source $GIT_DIR/shell/lib_shell.sh
+    if [ ! -e "$GIT_DIR/shell/lib_shell.sh" ]; then mkdir -p "$GIT_DIR" ; (cd "$GIT_DIR" || exit ; git clone git@github.com:cretinon/shell.git);fi
+    source "$GIT_DIR"/shell/lib_shell.sh
     _load_libs
 
     # process options
     if _process_opts "$@" ; then
-        if _exist $LIB; then
-            if _func_exist _process_lib_$LIB; then
-                _process_lib_$LIB "$OPTS"
+        if _exist "$LIB"; then
+            if _func_exist _process_lib_"$LIB"; then
+                _process_lib_"$LIB" "$OPTS"
             else
                 _warning "_process_lib_$LIB does not exist"
             fi
