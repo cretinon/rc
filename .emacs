@@ -14,12 +14,12 @@
       '(("elpa"         . "https://elpa.gnu.org/packages/")
         ("melpa-stable" . "https://stable.melpa.org/packages/")
         ("melpa"        . "https://melpa.org/packages/")
-	("nongnu"       . "https://elpa.nongnu.org/nongnu/"))
+        ("nongnu"       . "https://elpa.nongnu.org/nongnu/"))
       package-archive-priorities
       '(("melpa-stable" . 10)
         ("elpa"         . 5)
         ("melpa"        . 1)
-	("nongnu"       . 0)))
+        ("nongnu"       . 0)))
 (package-initialize)
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -543,9 +543,9 @@
   :ensure t
   :config
   :hook (
-	 (csv-mode . csv-guess-set-separator)
+         (csv-mode . csv-guess-set-separator)
          (csv-mode . csv-align-mode)
-	 )
+        )
   )
 ;;markdown
 (use-package markdown-mode
@@ -607,13 +607,13 @@
                         '(:key "C-<F1>" :description "open cheatsheet"))
   (cheatsheet-add-group 'Tab
                         '(:key "C-x t f" :description "open file in a new tab")
-			'(:key "C-x t 0" :description "close current tab")
-			'(:key "C-x t r" :description "rename tab")
+                        '(:key "C-x t 0" :description "close current tab")
+                        '(:key "C-x t r" :description "rename tab")
                         '(:key "<F4>" :description "next tab")
                         '(:key "<F5>" :description "previous tab"))
   (cheatsheet-add-group 'Window
                         '(:key "M-0 9" :description "switch to window 0 .. 9")
-			'(:key "C-x o" :description "next window")
+                        '(:key "C-x o" :description "next window")
                         '(:key "C-x 1" :description "close all windows except current one")
                         '(:key "C-x 2" :description "split horizontally")
                         '(:key "C-x 3" :description "split vertically")
@@ -629,13 +629,13 @@
                         '(:key "p" :description "push")
                         '(:key "M-x magit-pull" :description "pull"))
   (cheatsheet-add-group 'Code
-			'(:key "C-c ;" :description "comment region")
-			'(:key "C-c ." :description "uncomment region")
-			'(:key "ESC-%" :description "query replace")
-			;; tks to consult
-			'(:key "M-g i" :description "function reference")
-			'(:key "M-s l" :description "search")
-			'(:key "M-s g" :description "grep in code")
+                        '(:key "C-c ;" :description "comment region")
+                        '(:key "C-c ." :description "uncomment region")
+                        '(:key "ESC-%" :description "query replace")
+                        ;; tks to consult
+                        '(:key "M-g i" :description "function reference")
+                        '(:key "M-s l" :description "search")
+                        '(:key "M-s g" :description "grep in code")
                         '(:key "M-g M-g" :description "goto line")))
   (cheatsheet-add-group 'Emacs
                         '(:key "C-c SPC" :description "copy")
@@ -647,7 +647,7 @@
                         '(:key "C-SPC" :description "start selection")
                         '(:key "C-:" :description "undo")
                         '(:key "C-h b" :description "describe bindings")
-			'(:key "C-c C-l" :description "reload init file"))
+                        '(:key "C-c C-l" :description "reload init file"))
 (global-set-key (kbd "<C-f1>") 'cheatsheet-show)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
