@@ -31,6 +31,9 @@ alias clone_rc='git clone https://github.com/cretinon/rc.git'
 # because cursor is too big when exporting display with xming
 export XCURSOR_SIZE=16
 
+# because GPG is confused where to read input from
+export GPG_TTY=$(tty)
+
 function ssh-screen() {
     screen -t $1 ssh $@
 }
