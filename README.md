@@ -57,13 +57,13 @@ source .bashrc
 ```
 # Post install
 ## Emacs
-* Since summer 2025, a lot of packages relies on emacs-29.1 at least. Debian 12 is providing emacs-28, so we need to use backports ;
+* Since summer 2025, a lot of packages relies on emacs-29.1 at least. Debian 12 is providing emacs-28, so we need to use backports :
 ```
 echo "deb http://deb.debian.org/debian bookworm-backports main" > /etc/apt/sources.list.d/debian-12-backports.list
 apt-get update
 apt install -t bookworm-backports emacs
 ```
-*Once emacs is up2date, run emacs then ```M-x all-the-icons-install-fonts```
+* Once emacs is up2date, run emacs then ```M-x all-the-icons-install-fonts```
 ## Forge
 we may have already done
 * Create Github token https://github.com/settings/tokens
