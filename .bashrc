@@ -12,8 +12,8 @@ alias l='ls $LS_OPTIONS -lAi'
 
 alias df='df -h'
 
-alias grep='grep --color --text $@ 2>/dev/null'
-alias egrep='egrep --color --text $@ 2>/dev/null'
+alias grep='grep --color --text'
+alias egrep='egrep --color --text'
 
 alias rc='source ~/.bashrc'
 alias ra='source ~/.aliases'
@@ -91,17 +91,18 @@ _my_wrap() {
     export CUR_NAME=${FUNCNAME[0]}
 
     # load our shell functions and all libs
-    if [ ! -e "$GIT_DIR/shell/lib_shell.sh" ]; then mkdir -p "$GIT_DIR" ; (cd "$GIT_DIR" || exit ; git clone git@github.com:cretinon/shell.git);fi
-    source "$GIT_DIR"/shell/lib_shell.sh
-    _load_libs
+    if [ -e "$GIT_DIR/shell/lib_shell.sh" ]; then
+        source "$GIT_DIR"/shell/lib_shell.sh
+        _load_libs
 
-    # process options
-    if _process_opts "$@" ; then
-        if _exist "$LIB"; then
-            if _func_exist _process_lib_"$LIB"; then
-                _process_lib_"$LIB" "$OPTS"
-            else
-                _warning "_process_lib_$LIB does not exist"
+        # process options
+        if _process_opts "$@" ; then
+            if _exist "$LIB"; then
+                if _func_exist _process_lib_"$LIB"; then
+                    _process_lib_"$LIB" "$OPTS"
+                else
+                    _warning "_process_lib_$LIB does not exist"
+                fi
             fi
         fi
     fi
