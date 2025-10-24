@@ -4,6 +4,8 @@
 # * to get all rc files : "get_last_rc" or "wget -q https://github.com/cretinon/rc/archive/refs/heads/main.tar.gz -O - | tar -zxvf - -C /tmp/"
 # * to clone rc repo : "clone_rc" or "git clone https://github.com/cretinon/rc.git"
 
+alias _my_warp="/root/git/rc/my_warp.sh"
+
 export LS_OPTIONS='--color=auto'
 eval "$(dircolors)"
 alias ls='ls $LS_OPTIONS'
@@ -77,35 +79,6 @@ count_untracked() {
     fi
 
     echo "$_result__"
-}
-
-_my_wrap() {
-    # global var : debugging purpose, do not edit, use -v and -d to enable
-    export VERBOSE=false
-    export DEBUG=false
-    export FUNC_LIST=()
-    unset LIB
-
-    # global var : where are we pulling libs ?
-    export GIT_DIR="${HOME}/git"
-    export CUR_NAME=${FUNCNAME[0]}
-
-    # load our shell functions and all libs
-    if [ -e "$GIT_DIR/shell/lib_shell.sh" ]; then
-        source "$GIT_DIR"/shell/lib_shell.sh
-        _load_libs
-
-        # process options
-        if _process_opts "$@" ; then
-            if _exist "$LIB"; then
-                if _func_exist _process_lib_"$LIB"; then
-                    _process_lib_"$LIB" "$OPTS"
-                else
-                    _warning "_process_lib_$LIB does not exist"
-                fi
-            fi
-        fi
-    fi
 }
 
 PS1="\[\033[33m\]\u\[\033[00m\]@\[\033[35m\]\h\[\033[00m\] \w\[\033[32m\]\$(parse_git_branch)\[\033[00m\]\$(count_untracked) $ "
