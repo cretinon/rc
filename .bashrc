@@ -4,7 +4,7 @@
 # * to get all rc files : "get_last_rc" or "wget -q https://github.com/cretinon/rc/archive/refs/heads/main.tar.gz -O - | tar -zxvf - -C /tmp/"
 # * to clone rc repo : "clone_rc" or "git clone https://github.com/cretinon/rc.git"
 
-alias _my_warp="/root/git/rc/my_warp.sh"
+alias _my_warp="/root/git/shell/my_warp.sh"
 
 export LS_OPTIONS='--color=auto'
 eval "$(dircolors)"
